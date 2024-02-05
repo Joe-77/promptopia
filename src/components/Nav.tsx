@@ -18,46 +18,53 @@ const Nav = () => {
       </Link>
 
       {/* Mobile */}
-
-      <div className="relative sm:hidden">
-        <button onClick={() => setDropdown(!dropdown)}>
-          <Image src={user} width={70} height={70} alt="user" />
-        </button>
-        {dropdown && (
-          <div className="dropdown absolute z-50 left-[-50px] mt-2 flex flex-col gap-3">
-            <button className="bg-white shadow-xl p-2 rounded-xl">
-              <Link onClick={() => setDropdown(false)} href="/profile">
-                My Profile
-              </Link>
+      {isLogin ? (
+        <>
+          <div className="relative sm:hidden">
+            <button onClick={() => setDropdown(!dropdown)}>
+              <Image src={user} width={70} height={70} alt="user" />
             </button>
+            {dropdown && (
+              <div className="dropdown absolute z-50 left-[-50px] mt-2 flex flex-col gap-3">
+                <button className="bg-white shadow-xl p-2 rounded-xl">
+                  <Link onClick={() => setDropdown(false)} href="/profile">
+                    My Profile
+                  </Link>
+                </button>
+                <button className="bg-black text-white p-2 rounded-2xl text-sm duration-500 hover:bg-transparent hover:text-black border-[1px] border-black">
+                  <Link onClick={() => setDropdown(false)} href={"/new-post"}>
+                    Create Post
+                  </Link>
+                </button>
+                <button className="bg-transparent text-black px-3 py-2 rounded-2xl text-sm duration-500 hover:bg-black hover:text-white border-[1px] border-black">
+                  <Link onClick={() => setDropdown(false)} href={"/"}>
+                    Sign Out
+                  </Link>
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Desktop */}
+          <div className="max-sm:hidden flex items-center gap-4">
             <button className="bg-black text-white p-2 rounded-2xl text-sm duration-500 hover:bg-transparent hover:text-black border-[1px] border-black">
-              <Link onClick={() => setDropdown(false)} href={"/new-post"}>
-                Create Post
-              </Link>
+              <Link href={"/new-post"}>Create Post</Link>
             </button>
             <button className="bg-transparent text-black px-3 py-2 rounded-2xl text-sm duration-500 hover:bg-black hover:text-white border-[1px] border-black">
-              <Link onClick={() => setDropdown(false)} href={"/"}>
-                Sign Out
+              <Link href={"/"}>Sign Out</Link>
+            </button>
+            <button>
+              <Link href={"/profile"}>
+                <Image src={user} width={70} height={70} alt="user" />
               </Link>
             </button>
           </div>
-        )}
-      </div>
-
-      {/* Desktop */}
-      <div className="max-sm:hidden flex items-center gap-4">
-        <button className="bg-black text-white p-2 rounded-2xl text-sm duration-500 hover:bg-transparent hover:text-black border-[1px] border-black">
-          <Link href={"/new-post"}>Create Post</Link>
+        </>
+      ) : (
+        <button className="bg-blue-500 px-2 py-1 rounded-xl text-white">
+          <Link href='/login'>Sign In</Link>
         </button>
-        <button className="bg-transparent text-black px-3 py-2 rounded-2xl text-sm duration-500 hover:bg-black hover:text-white border-[1px] border-black">
-          <Link href={"/"}>Sign Out</Link>
-        </button>
-        <button>
-          <Link href={"/profile"}>
-            <Image src={user} width={70} height={70} alt="user" />
-          </Link>
-        </button>
-      </div>
+      )}
     </nav>
   );
 };
