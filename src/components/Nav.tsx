@@ -3,10 +3,11 @@ import Image from "next/image";
 import logo from "../../assets/images/logo.svg";
 import user from "../../assets/images/user.png";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Context } from "@/context/context";
 
 const Nav = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const { isLogin, handleSignOut } = useContext(Context);
   const [dropdown, setDropdown] = useState(false);
   return (
     <nav className="px-4 sm:px-0 container m-auto flex justify-between items-center py-5 pb-10">
@@ -36,7 +37,10 @@ const Nav = () => {
                     Create Post
                   </Link>
                 </button>
-                <button className="bg-transparent text-black px-3 py-2 rounded-2xl text-sm duration-500 hover:bg-black hover:text-white border-[1px] border-black">
+                <button
+                  onClick={handleSignOut}
+                  className="bg-transparent text-black px-3 py-2 rounded-2xl text-sm duration-500 hover:bg-black hover:text-white border-[1px] border-black"
+                >
                   <Link onClick={() => setDropdown(false)} href={"/"}>
                     Sign Out
                   </Link>
@@ -50,7 +54,10 @@ const Nav = () => {
             <button className="bg-black text-white p-2 rounded-2xl text-sm duration-500 hover:bg-transparent hover:text-black border-[1px] border-black">
               <Link href={"/new-post"}>Create Post</Link>
             </button>
-            <button className="bg-transparent text-black px-3 py-2 rounded-2xl text-sm duration-500 hover:bg-black hover:text-white border-[1px] border-black">
+            <button
+              onClick={handleSignOut}
+              className="bg-transparent text-black px-3 py-2 rounded-2xl text-sm duration-500 hover:bg-black hover:text-white border-[1px] border-black"
+            >
               <Link href={"/"}>Sign Out</Link>
             </button>
             <button>
@@ -62,7 +69,7 @@ const Nav = () => {
         </>
       ) : (
         <button className="bg-blue-500 px-2 py-1 rounded-xl text-white">
-          <Link href='/login'>Sign In</Link>
+          <Link href="/login">Sign In</Link>
         </button>
       )}
     </nav>
