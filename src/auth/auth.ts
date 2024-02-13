@@ -1,4 +1,4 @@
-import { auth, db } from "@/firebase/firebaseConfig";
+import { auth, db, storage } from "@/firebase/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
@@ -6,9 +6,16 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { redirect, useRouter } from "next/navigation";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { useRouter } from "next/navigation";
 import { useMutation, UseMutationOptions } from "react-query";
 import { toast } from "react-toastify";
+import getUser from "./getUser";
 
 interface User {
   userName: string;
@@ -34,6 +41,7 @@ export const createNewUser = () => {
 
         updateProfile(user, {
           displayName: name,
+          photoURL: "",
         });
 
         setDoc(userRef, {
@@ -88,5 +96,69 @@ export const resetPass = () => {
 
   return useMutation({
     mutationFn: (user: { email: string }) => reset(user),
+  });
+};
+
+export const updateUserProfile = () => {
+  // const router = useRouter();
+
+  const currentUser: { uid: string } | any = getUser();
+  const router = useRouter();
+
+  const handleUpdate = (data: { userName: string; photo: any }) => {
+    const userName = data.userName;
+    const photo = data?.photo[0];
+    const photoName = photo.name;
+    const userRef = doc(db, "users", currentUser.uid);
+
+    if (photo) {
+      const storageRef = ref(storage, `images/${currentUser.uid}/${photoName}`);
+      const uploadTask = uploadBytesResumable(storageRef, photo);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {},
+        (error) => {
+          toast.error(error.message);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            await updateProfile(currentUser, {
+              displayName: userName,
+              photoURL: downloadURL,
+            });
+
+            await setDoc(userRef, {
+              id: currentUser.uid,
+              displayName: userName,
+              email: currentUser.email,
+              photoURL: downloadURL,
+            });
+          });
+        }
+      );
+    } else {
+      updateProfile(currentUser, {
+        displayName: userName,
+      });
+
+      setDoc(userRef, {
+        id: currentUser.uid,
+        displayName: userName,
+        email: currentUser.email,
+      });
+    }
+
+    return Promise.resolve(data);
+  };
+
+  return useMutation({
+    mutationFn: (data: { userName: string; photo: any }) => handleUpdate(data),
+    onSuccess: () => {
+      toast.success("account updated successfully");
+      router.push("/");
+    },
+    onError: () => {
+      toast.error("updated failed! try again");
+    },
   });
 };

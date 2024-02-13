@@ -2,6 +2,7 @@ import {
   createNewUser,
   loginWithMailAndPassword,
   resetPass,
+  updateUserProfile,
 } from "@/auth/auth";
 import { auth, db, provider } from "@/firebase/firebaseConfig";
 import { handleFirebaseAuthErrors } from "@/utility/firebaseError";
@@ -25,6 +26,7 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
   const signUpUser = createNewUser();
   const loginWithMailAndPass = loginWithMailAndPassword();
   const forgetPass = resetPass();
+  const editProfile = updateUserProfile();
 
   const signUp = (data: Users) => {
     signUpUser.mutateAsync(data, {
@@ -61,6 +63,7 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
           id: user.uid,
           displayName: user.displayName,
           email: user.email,
+          photoURL: user?.photoURL,
           join: new Date(),
         });
         toast.success("Login Successfully");
@@ -83,9 +86,21 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
     });
   };
 
+  const handleUpdate = (data: { userName: string; photo: any }) => {
+    editProfile.mutateAsync(data);
+  };
+
   return (
     <Context.Provider
-      value={{ isLogin, signUp, login, loginWithGoogle, reset, handleSignOut }}
+      value={{
+        isLogin,
+        signUp,
+        login,
+        loginWithGoogle,
+        reset,
+        handleSignOut,
+        handleUpdate,
+      }}
     >
       {children}
     </Context.Provider>

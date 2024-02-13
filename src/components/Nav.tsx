@@ -5,10 +5,13 @@ import user from "../../assets/images/user.png";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { Context } from "@/context/context";
+import getUser from "@/auth/getUser";
 
 const Nav = () => {
   const { isLogin, handleSignOut } = useContext(Context);
   const [dropdown, setDropdown] = useState(false);
+  const currentUser: any = getUser();
+
   return (
     <nav className="px-4 sm:px-0 container m-auto flex justify-between items-center py-5 pb-10">
       <Link className="flex items-center gap-3" href={"/"}>
@@ -23,7 +26,13 @@ const Nav = () => {
         <>
           <div className="relative sm:hidden">
             <button onClick={() => setDropdown(!dropdown)}>
-              <Image src={user} width={70} height={70} alt="user" />
+              <Image
+                className="rounded-full"
+                src={currentUser?.photoURL ? currentUser.photoURL : user}
+                width={70}
+                height={70}
+                alt="user"
+              />
             </button>
             {dropdown && (
               <div className="dropdown absolute z-50 left-[-50px] mt-2 flex flex-col gap-3">
@@ -62,7 +71,13 @@ const Nav = () => {
             </button>
             <button>
               <Link href={"/profile"}>
-                <Image src={user} width={70} height={70} alt="user" />
+                <Image
+                className="rounded-full"
+                  src={currentUser?.photoURL ? currentUser.photoURL : user}
+                  width={70}
+                  height={70}
+                  alt=""
+                />
               </Link>
             </button>
           </div>
