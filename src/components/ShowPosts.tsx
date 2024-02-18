@@ -12,7 +12,6 @@ import Link from "next/link";
 const ShowPosts = () => {
   const { data, isLoading } = GetAllPost();
 
-
   return (
     <div className="mt-16 pb-5 min-h-[80vh]">
       {isLoading && (
@@ -94,7 +93,6 @@ const ShowPosts = () => {
                 <span className="text-xl">
                   <AiFillMessage />
                 </span>
-                <span className="text-xs text-gray-500">{e.comment}</span>
               </Link>
             </div>
           ))}
