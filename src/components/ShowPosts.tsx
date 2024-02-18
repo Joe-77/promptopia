@@ -68,7 +68,7 @@ const ShowPosts = () => {
                 <div className="pt-5">
                   <h5 className="text-sm">{e.title}</h5>
                   {e?.photo && (
-                    <div className="relative mt-2 w-full h-72">
+                    <div className="relative mt-2 w-full h-[500px] sm:h-96 lg:h-[450px] ">
                       <Image
                         className="rounded-md"
                         fill
