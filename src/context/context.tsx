@@ -24,7 +24,7 @@ export const Context = createContext<any>(undefined);
 
 export const AuthContextProvider = ({ children }: { children: any }) => {
   const router = useRouter();
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const signUpUser = CreateNewUser();
   const loginWithMailAndPass: any = LoginWithMailAndPassword();
   const forgetPass = ResetPass();
