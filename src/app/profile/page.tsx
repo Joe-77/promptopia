@@ -11,6 +11,7 @@ import PostUser from "@/components/PostUser";
 interface UserData {
   displayName: string;
   email: any;
+  photoURL: string;
 }
 
 const Page = () => {
@@ -28,7 +29,7 @@ const Page = () => {
           {currentUser?.photoURL ? (
             <Image
               className="m-auto rounded-full"
-              src={currentUser.photoURL}
+              src={currentUser?.photoURL}
               width={600}
               height={300}
               alt="user"
@@ -43,12 +44,11 @@ const Page = () => {
             />
           )}
           <p className="text-sm px-3 py-5 font-bold">
-            User Name :{" "}
+            User Name :
             <span className="text-orange-500">{currentUser?.displayName}</span>
           </p>
           <p className="text-sm px-3 font-bold">
-            Email :{" "}
-            <span className="text-orange-500">{currentUser?.email}</span>
+            Email :<span className="text-orange-500">{currentUser?.email}</span>
           </p>
         </div>
         <div className="flex justify-end mt-3">

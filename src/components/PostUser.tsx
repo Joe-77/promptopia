@@ -6,6 +6,7 @@ import Link from "next/link";
 import Menu from "./Menu";
 import { AiFillMessage } from "react-icons/ai";
 import GetUser from "@/auth/getUser";
+import { DNA } from "react-loader-spinner";
 const PostUser = () => {
   const currentUser: any = GetUser();
   const { data, isLoading } = GetAllPost();
@@ -13,6 +14,18 @@ const PostUser = () => {
 
   return (
     <div className="container mx-auto mt-20 px-3 sm:px-0 pb-20">
+      {isLoading && (
+        <span className="flex justify-center w-full mt-28">
+          <DNA
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
+        </span>
+      )}
       {allData?.length === 0 ? (
         <span className="text-lg flex justify-center mt-20 font-bold items-center gap-1">
           <small>you don&apos;t have posts</small>
