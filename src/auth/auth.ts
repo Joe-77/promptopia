@@ -1,6 +1,7 @@
 import { auth, db, storage } from "@/firebase/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
+  deleteUser,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   updateProfile,
@@ -96,6 +97,9 @@ export const resetPass = () => {
 
   return useMutation({
     mutationFn: (user: { email: string }) => reset(user),
+    onSuccess: () => {
+      router.push("/login");
+    },
   });
 };
 

@@ -17,3 +17,6 @@ input[type="password"]::-ms-reveal {
   font-size: 10px;
   border-radius: 10px;
 }
+::-webkit-resizer {
+  display: none;
+}

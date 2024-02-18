@@ -7,13 +7,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContextProvider } from "@/context/context";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
-
-// export const metadata: Metadata = {
-//   title: "Promptopia",
-//   description: "Discover & Share AI Prompt",
-// };
 
 const queryClient = new QueryClient();
 
@@ -34,6 +30,7 @@ export default function RootLayout({
             <Nav />
             {children}
             <ToastContainer />
+            <Footer/>
           </AuthContextProvider>
         </QueryClientProvider>
       </body>

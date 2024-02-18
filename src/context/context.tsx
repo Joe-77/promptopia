@@ -4,10 +4,12 @@ import {
   resetPass,
   updateUserProfile,
 } from "@/auth/auth";
-import { auth, db, provider } from "@/firebase/firebaseConfig";
+import getUser from "@/auth/getUser";
+import { addComment, addPost, updatePost } from "@/data/data";
+import { auth, db, provider, storage } from "@/firebase/firebaseConfig";
 import { handleFirebaseAuthErrors } from "@/utility/firebaseError";
-import { signInWithPopup, signOut } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { deleteUser, signInWithPopup, signOut } from "firebase/auth";
+import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { createContext, useState } from "react";
 import { toast } from "react-toastify";
@@ -22,11 +24,16 @@ export const Context = createContext<any>(undefined);
 
 export const AuthContextProvider = ({ children }: { children: any }) => {
   const router = useRouter();
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const signUpUser = createNewUser();
-  const loginWithMailAndPass = loginWithMailAndPassword();
+  const loginWithMailAndPass: any = loginWithMailAndPassword();
   const forgetPass = resetPass();
   const editProfile = updateUserProfile();
+  const currentUser: any = getUser();
+  const cretePost = addPost();
+  const handleEditPost = updatePost();
+  const comment = addComment();
+  const [timeProgress, setTimeProgress] = useState(0);
 
   const signUp = (data: Users) => {
     signUpUser.mutateAsync(data, {
@@ -90,6 +97,30 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
     editProfile.mutateAsync(data);
   };
 
+  const handleUpdatePost = (data: any) => {
+    handleEditPost.mutateAsync(data);
+  };
+
+  const handleDeleteCurrentUser = async () => {
+    await deleteUser(currentUser)
+      .then(() => {
+        deleteDoc(doc(db, "users", currentUser.uid));
+        toast.success("account deleted successfully");
+        setIsLogin(false);
+      })
+      .catch(() => {
+        toast.error("deleted failed! try again");
+      });
+  };
+
+  const handleCreatePost = (data: any) => {
+    cretePost.mutateAsync(data);
+  };
+
+  const handleAddComment = (post: any) => {
+    comment.mutateAsync(post);
+  };
+
   return (
     <Context.Provider
       value={{
@@ -100,6 +131,12 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
         reset,
         handleSignOut,
         handleUpdate,
+        handleDeleteCurrentUser,
+        handleCreatePost,
+        handleUpdatePost,
+        handleAddComment,
+        timeProgress,
+        setTimeProgress,
       }}
     >
       {children}

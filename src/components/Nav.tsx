@@ -14,7 +14,11 @@ const Nav = () => {
 
   return (
     <nav className="px-4 sm:px-0 container m-auto flex justify-between items-center py-5 pb-10">
-      <Link className="flex items-center gap-3" href={"/"}>
+      <Link
+        onClick={() => setDropdown(false)}
+        className="flex items-center gap-3"
+        href={"/"}
+      >
         <Image src={logo} width={50} height={50} alt="logo" />
         <span className="max-sm:hidden text-2xl font-bold tracking-wider">
           Share Prompt
@@ -26,13 +30,23 @@ const Nav = () => {
         <>
           <div className="relative sm:hidden">
             <button onClick={() => setDropdown(!dropdown)}>
-              <Image
-                className="rounded-full"
-                src={currentUser?.photoURL ? currentUser.photoURL : user}
-                width={70}
-                height={70}
-                alt="user"
-              />
+              {currentUser?.photoURL ? (
+                <Image
+                  className="rounded-full"
+                  src={currentUser.photoURL}
+                  width={70}
+                  height={70}
+                  alt=""
+                />
+              ) : (
+                <Image
+                  className="rounded-full"
+                  src={user}
+                  width={70}
+                  height={70}
+                  alt=""
+                />
+              )}
             </button>
             {dropdown && (
               <div className="dropdown absolute z-50 left-[-50px] mt-2 flex flex-col gap-3">
@@ -71,13 +85,23 @@ const Nav = () => {
             </button>
             <button>
               <Link href={"/profile"}>
-                <Image
-                className="rounded-full"
-                  src={currentUser?.photoURL ? currentUser.photoURL : user}
-                  width={70}
-                  height={70}
-                  alt=""
-                />
+                {currentUser?.photoURL ? (
+                  <Image
+                    className="rounded-full"
+                    src={currentUser.photoURL}
+                    width={70}
+                    height={70}
+                    alt=""
+                  />
+                ) : (
+                  <Image
+                    className="rounded-full"
+                    src={user}
+                    width={70}
+                    height={70}
+                    alt=""
+                  />
+                )}
               </Link>
             </button>
           </div>
