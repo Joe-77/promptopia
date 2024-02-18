@@ -1,8 +1,6 @@
 "use client";
-import getUser from "@/auth/getUser";
 import UpdatePostPhoto from "@/components/UpdatePostPhoto";
 import { Context } from "@/context/context";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";

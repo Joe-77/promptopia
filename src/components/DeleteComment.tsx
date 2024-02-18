@@ -1,10 +1,10 @@
-import getUser from "@/auth/getUser";
+import GetUser from "@/auth/getUser";
 import { HandleDeleteComment } from "@/data/data";
 import { useState } from "react";
 import { CiMenuKebab } from "react-icons/ci";
 
 const DeleteComment = ({ userID, commentId, postId, commentNum }: any) => {
-  const currentUser: any = getUser();
+  const currentUser: any = GetUser();
 
   const [showToggle, setShowToggle] = useState(false);
 

@@ -1,4 +1,4 @@
-import getUser from "@/auth/getUser";
+import GetUser from "@/auth/getUser";
 import { Context } from "@/context/context";
 import { storage } from "@/firebase/firebaseConfig";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
@@ -12,7 +12,7 @@ const UpdatePostPhoto = ({
   setCurrentImg,
   setProgress,
 }: any) => {
-  const currentUser: any = getUser();
+  const currentUser: any = GetUser();
   const { setTimeProgress } = useContext(Context);
 
   const upload = async (e: any) => {

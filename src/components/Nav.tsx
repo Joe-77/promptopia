@@ -5,12 +5,12 @@ import user from "../../assets/images/user.png";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { Context } from "@/context/context";
-import getUser from "@/auth/getUser";
+import GetUser from "@/auth/getUser";
 
 const Nav = () => {
   const { isLogin, handleSignOut } = useContext(Context);
   const [dropdown, setDropdown] = useState(false);
-  const currentUser: any = getUser();
+  const currentUser: any = GetUser();
 
   return (
     <nav className="px-4 sm:px-0 container m-auto flex justify-between items-center py-5 pb-10">

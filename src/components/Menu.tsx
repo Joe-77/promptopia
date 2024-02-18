@@ -1,11 +1,11 @@
-import getUser from "@/auth/getUser";
+import GetUser from "@/auth/getUser";
 import { DeletePost } from "@/data/data";
 import Link from "next/link";
 import { useState } from "react";
 import { CiMenuKebab } from "react-icons/ci";
 
 export default function Menu({ id, postId, data }: any) {
-  const currentUser: any = getUser();
+  const currentUser: any = GetUser();
 
   const [showToggle, setShowToggle] = useState(false);
 

@@ -3,7 +3,7 @@ import { Context } from "@/context/context";
 import { redirect } from "next/navigation";
 import { useContext } from "react";
 import user from "../../../assets/images/user.png";
-import getUser from "@/auth/getUser";
+import GetUser from "@/auth/getUser";
 import Image from "next/image";
 import Link from "next/link";
 import PostUser from "@/components/PostUser";
@@ -15,7 +15,7 @@ interface UserData {
 
 const Page = () => {
   const { isLogin } = useContext(Context);
-  const currentUser: UserData | any = getUser();
+  const currentUser: UserData | any = GetUser();
 
   if (!isLogin) {
     return redirect("/login");

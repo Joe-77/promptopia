@@ -1,5 +1,5 @@
 "use client";
-import getUser from "@/auth/getUser";
+import GetUser from "@/auth/getUser";
 import user from "../../../../assets/images/user.png";
 import { useContext } from "react";
 import { Context } from "@/context/context";
@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import ShowComments from "@/components/ShowComments";
 
 const Comment = ({ searchParams }: any) => {
-  const currentUser: any = getUser();
+  const currentUser: any = GetUser();
   const { isLogin, handleAddComment } = useContext(Context);
   const postId: any = searchParams.postId;
   const commentNum = Number(searchParams.comment);

@@ -2,7 +2,7 @@ import { auth } from "@/firebase/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 
-const getUser = () => {
+const GetUser = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
@@ -13,4 +13,4 @@ const getUser = () => {
   return currentUser;
 };
 
-export default getUser;
+export default GetUser;

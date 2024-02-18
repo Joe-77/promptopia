@@ -1,4 +1,3 @@
-import getUser from "@/auth/getUser";
 import { Context } from "@/context/context";
 import { db, storage } from "@/firebase/firebaseConfig";
 import {

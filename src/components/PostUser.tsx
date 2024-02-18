@@ -1,13 +1,13 @@
 "use client";
-import getUser from "@/auth/getUser";
 import { GetAllPost } from "@/data/data";
 import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import Menu from "./Menu";
 import { AiFillMessage } from "react-icons/ai";
+import GetUser from "@/auth/getUser";
 const PostUser = () => {
-  const currentUser: any = getUser();
+  const currentUser: any = GetUser();
   const { data, isLoading } = GetAllPost();
   const allData = data?.filter((e: any) => e.author?.id === currentUser?.uid);
 

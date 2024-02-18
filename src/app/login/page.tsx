@@ -9,13 +9,15 @@ const Page = () => {
       <div className="flex gap-5">
         <div>
           <h2 className="text-3xl font-bold">
-            Sign In to <br />
+            Sign In to
+            <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-br from-pink-500 to-orange-500 font-mono">
               Promptopia
             </span>
           </h2>
           <p className="text-sm mt-9 leading-5">
-            if you don't an account <br /> you can
+            if you don't an account
+            <br /> you can
             <Link className="text-blue-700 font-bold" href="register">
               Register here!
             </Link>

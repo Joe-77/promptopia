@@ -1,6 +1,6 @@
 "use client";
 
-import getUser from "@/auth/getUser";
+import GetUser from "@/auth/getUser";
 import UploadFile from "@/components/UploadFile";
 import { Context } from "@/context/context";
 import { redirect, useRouter } from "next/navigation";
@@ -18,7 +18,7 @@ const Page = () => {
   const route = useRouter();
   const [changeFiles, setChangeFiles] = useState(null);
   const [progress, setProgress]: any = useState(100);
-  const currentUser: any = getUser();
+  const currentUser: any = GetUser();
   const { timeProgress } = useContext(Context);
 
   if (!isLogin) {

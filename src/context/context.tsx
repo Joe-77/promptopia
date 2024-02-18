@@ -4,7 +4,7 @@ import {
   ResetPass,
   UpdateUserProfile,
 } from "@/auth/auth";
-import getUser from "@/auth/getUser";
+import GetUser from "@/auth/getUser";
 import { AddComment, AddPost, UpdatePost } from "@/data/data";
 import { auth, db, provider, storage } from "@/firebase/firebaseConfig";
 import { handleFirebaseAuthErrors } from "@/utility/firebaseError";
@@ -29,7 +29,7 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
   const loginWithMailAndPass: any = LoginWithMailAndPassword();
   const forgetPass = ResetPass();
   const editProfile = UpdateUserProfile();
-  const currentUser: any = getUser();
+  const currentUser: any = GetUser();
   const cretePost = AddPost();
   const handleEditPost = UpdatePost();
   const comment = AddComment();

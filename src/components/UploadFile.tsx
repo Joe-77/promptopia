@@ -1,4 +1,4 @@
-import getUser from "@/auth/getUser";
+import GetUser from "@/auth/getUser";
 import { Context } from "@/context/context";
 import { storage } from "@/firebase/firebaseConfig";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { toast } from "react-toastify";
 
 function UploadFile({ file, setProgress, required, register, errors }: any) {
-  const currentUser: any = getUser();
+  const currentUser: any = GetUser();
   const { setTimeProgress } = useContext(Context);
 
   const upload = (e: any) => {
