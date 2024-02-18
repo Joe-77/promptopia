@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
-const edit = ({ searchParams }: any) => {
+const Edit = ({ searchParams }: any) => {
   const [currenImg, setCurrentImg] = useState(searchParams.photo);
   const [progress, setProgress] = useState(null);
   const { isLogin, handleUpdatePost, timeProgress } = useContext(Context);
@@ -82,4 +82,4 @@ const edit = ({ searchParams }: any) => {
   );
 };
 
-export default edit;
+export default Edit;
