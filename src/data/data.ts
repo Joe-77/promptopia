@@ -92,11 +92,11 @@ export const AddComment = () => {
 
   const handleClickLike = async (comment: any) => {
     const postId = comment.id;
-    let num = Number(comment.comment);
+    let num = comment.comment;
     const commentCollectionRef = collection(db, "comments");
     await addDoc(commentCollectionRef, comment);
     await updateDoc(doc(db, "posts", postId), {
-      comment: num + 1,
+      comment: eval(num + 1),
     });
 
     return Promise.resolve(comment);

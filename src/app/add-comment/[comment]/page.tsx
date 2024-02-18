@@ -29,7 +29,7 @@ const Comment = ({ searchParams }: any) => {
     const data = {
       title: comment.title,
       createdAt: new Date(),
-      comment: commentNum,
+      comment: Number(commentNum),
       id: postId,
       userPost: postId,
       author: {
