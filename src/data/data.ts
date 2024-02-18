@@ -96,9 +96,8 @@ export const AddComment = () => {
     const commentCollectionRef = collection(db, "comments");
     await addDoc(commentCollectionRef, comment);
     await updateDoc(doc(db, "posts", postId), {
-      comment: eval(num + 1),
+      comment: num + 1,
     });
-
     return Promise.resolve(comment);
   };
 

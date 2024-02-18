@@ -13,7 +13,7 @@ const Comment = ({ searchParams }: any) => {
   const currentUser: any = GetUser();
   const { isLogin, handleAddComment } = useContext(Context);
   const postId: any = searchParams.postId;
-  const commentNum = eval(searchParams.comment);
+  const commentNum = Number(searchParams.comment);
 
   console.log(commentNum);
 
