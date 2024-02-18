@@ -34,7 +34,7 @@ const Page = () => {
       author: {
         id: currentUser.uid,
         name: currentUser.displayName,
-        userPhoto: currentUser.photoURL,
+        userPhoto: currentUser?.photoURL,
       },
     };
     handleCreatePost(postDetails);
