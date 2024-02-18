@@ -13,7 +13,9 @@ const Comment = ({ searchParams }: any) => {
   const currentUser: any = GetUser();
   const { isLogin, handleAddComment } = useContext(Context);
   const postId: any = searchParams.postId;
-  const commentNum = Number(searchParams.comment);
+  const commentNum = eval(searchParams.comment);
+
+  console.log(commentNum);
 
   const {
     register,
@@ -29,7 +31,7 @@ const Comment = ({ searchParams }: any) => {
     const data = {
       title: comment.title,
       createdAt: new Date(),
-      comment: Number(commentNum),
+      comment: commentNum,
       id: postId,
       userPost: postId,
       author: {

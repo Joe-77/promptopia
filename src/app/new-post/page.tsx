@@ -30,7 +30,7 @@ const Page = () => {
       title: data.title,
       photo: changeFiles,
       createdAt: new Date(),
-      comment: Number(0),
+      comment: eval("0"),
       author: {
         id: currentUser.uid,
         name: currentUser.displayName,
