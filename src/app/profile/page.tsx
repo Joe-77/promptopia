@@ -13,7 +13,7 @@ interface UserData {
   email: any;
 }
 
-const profile = () => {
+const Page = () => {
   const { isLogin } = useContext(Context);
   const currentUser: UserData | any = getUser();
 
@@ -62,4 +62,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Page;

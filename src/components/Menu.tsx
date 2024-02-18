@@ -1,5 +1,5 @@
 import getUser from "@/auth/getUser";
-import { deletePost } from "@/data/data";
+import { DeletePost } from "@/data/data";
 import Link from "next/link";
 import { useState } from "react";
 import { CiMenuKebab } from "react-icons/ci";
@@ -34,7 +34,7 @@ export default function Menu({ id, postId, data }: any) {
                 </Link>
               </button>
               <button
-                onClick={() => deletePost(postId)}
+                onClick={() => DeletePost(postId)}
                 className="bg-red-600 px-2 py-1 rounded-md text-white capitalize tracking-widest text-sm"
               >
                 delete

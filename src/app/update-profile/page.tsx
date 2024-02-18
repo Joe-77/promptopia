@@ -10,7 +10,7 @@ import { IoMail } from "react-icons/io5";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
-const update = () => {
+const Page = () => {
   const {
     register,
     handleSubmit,
@@ -103,4 +103,4 @@ const update = () => {
   );
 };
 
-export default update;
+export default Page;

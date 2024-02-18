@@ -15,7 +15,7 @@ import { redirect, useRouter } from "next/navigation";
 import { useMutation, useQuery } from "react-query";
 import { toast } from "react-toastify";
 
-export const addPost = () => {
+export const AddPost = () => {
   const router = useRouter();
 
   const addNewPost = async (post: any) => {
@@ -37,7 +37,7 @@ export const addPost = () => {
   });
 };
 
-export const getAllPost = () => {
+export const GetAllPost = () => {
   const getPosts = async () => {
     const postRef = collection(db, "posts");
     const data = await getDocs(query(postRef, orderBy("createdAt", "desc")));
@@ -52,7 +52,7 @@ export const getAllPost = () => {
   });
 };
 
-export const deletePost = async (id: string) => {
+export const DeletePost = async (id: string) => {
   const postRef = doc(db, "posts", id);
 
   await deleteDoc(postRef)
@@ -64,7 +64,7 @@ export const deletePost = async (id: string) => {
     });
 };
 
-export const updatePost = () => {
+export const UpdatePost = () => {
   const router = useRouter();
   const handleUpdatePost = async (data: any) => {
     const postId = data.postId;
@@ -88,7 +88,7 @@ export const updatePost = () => {
   });
 };
 
-export const addComment = () => {
+export const AddComment = () => {
   const router = useRouter();
 
   const handleClickLike = async (comment: any) => {
@@ -115,7 +115,7 @@ export const addComment = () => {
   });
 };
 
-export const getAllComments = () => {
+export const GetAllComments = () => {
   const getComments = async () => {
     const commentRef = collection(db, "comments");
     const data = await getDocs(query(commentRef, orderBy("createdAt", "desc")));
@@ -130,7 +130,7 @@ export const getAllComments = () => {
   });
 };
 
-export const handleDeleteComment = async (aboutData: {
+export const HandleDeleteComment = async (aboutData: {
   commentId: string;
   postId: string;
   commentNum: number;

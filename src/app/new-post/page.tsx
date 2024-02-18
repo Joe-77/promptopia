@@ -7,7 +7,7 @@ import { redirect, useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
-const newPost = () => {
+const Page = () => {
   const { isLogin, handleCreatePost } = useContext(Context);
   const {
     register,
@@ -95,4 +95,4 @@ const newPost = () => {
   );
 };
 
-export default newPost;
+export default Page;

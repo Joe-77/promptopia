@@ -1,5 +1,5 @@
 "use client";
-import { getAllPost } from "@/data/data";
+import { GetAllPost } from "@/data/data";
 import moment from "moment";
 import Image from "next/image";
 import Menu from "./Menu";
@@ -10,7 +10,7 @@ import { Context } from "@/context/context";
 import Link from "next/link";
 
 const ShowPosts = () => {
-  const { data, isLoading } = getAllPost();
+  const { data, isLoading } = GetAllPost();
 
 
   return (

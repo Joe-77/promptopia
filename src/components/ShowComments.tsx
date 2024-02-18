@@ -1,4 +1,4 @@
-import { getAllComments } from "@/data/data";
+import { GetAllComments } from "@/data/data";
 import user from "../../assets/images/user.png";
 import Image from "next/image";
 import moment from "moment";
@@ -6,7 +6,7 @@ import { Comment } from "react-loader-spinner";
 import DeleteComment from "./DeleteComment";
 
 const ShowComments = ({ postId, commentNum }: any) => {
-  const { data, isLoading } = getAllComments();
+  const { data, isLoading } = GetAllComments();
   const allData = data?.filter((e: any) => e.userPost === postId);
 
   return (

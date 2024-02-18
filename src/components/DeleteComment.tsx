@@ -1,5 +1,5 @@
 import getUser from "@/auth/getUser";
-import { handleDeleteComment } from "@/data/data";
+import { HandleDeleteComment } from "@/data/data";
 import { useState } from "react";
 import { CiMenuKebab } from "react-icons/ci";
 
@@ -31,7 +31,7 @@ const DeleteComment = ({ userID, commentId, postId, commentNum }: any) => {
             </span>
             {showToggle && (
               <button
-                onClick={() => handleDeleteComment(aboutComment)}
+                onClick={() => HandleDeleteComment(aboutComment)}
                 className="bg-red-600 px-2 py-1 rounded-md text-white capitalize tracking-widest text-sm absolute z-30 top-6 left-[-50px] select-none"
               >
                 delete

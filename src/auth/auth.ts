@@ -29,7 +29,7 @@ interface Login {
   password: string;
 }
 
-export const createNewUser = () => {
+export const CreateNewUser = () => {
   const createUser = async (user: User) => {
     const name = user.userName;
     const mail = user.email;
@@ -64,7 +64,7 @@ export const createNewUser = () => {
   return useMutation<User, unknown, User>(mutationOptions);
 };
 
-export const loginWithMailAndPassword = () => {
+export const LoginWithMailAndPassword = () => {
   const signIn = async (user: Login) => {
     const mail = user.email;
     const password = user.password;
@@ -79,7 +79,7 @@ export const loginWithMailAndPassword = () => {
   });
 };
 
-export const resetPass = () => {
+export const ResetPass = () => {
   const router = useRouter();
   const reset = async (user: { email: string }) => {
     const email = user.email;
@@ -103,7 +103,7 @@ export const resetPass = () => {
   });
 };
 
-export const updateUserProfile = () => {
+export const UpdateUserProfile = () => {
   // const router = useRouter();
 
   const currentUser: { uid: string } | any = getUser();

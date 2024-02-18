@@ -1,11 +1,11 @@
 import {
-  createNewUser,
-  loginWithMailAndPassword,
-  resetPass,
-  updateUserProfile,
+  CreateNewUser,
+  LoginWithMailAndPassword,
+  ResetPass,
+  UpdateUserProfile,
 } from "@/auth/auth";
 import getUser from "@/auth/getUser";
-import { addComment, addPost, updatePost } from "@/data/data";
+import { AddComment, AddPost, UpdatePost } from "@/data/data";
 import { auth, db, provider, storage } from "@/firebase/firebaseConfig";
 import { handleFirebaseAuthErrors } from "@/utility/firebaseError";
 import { deleteUser, signInWithPopup, signOut } from "firebase/auth";
@@ -24,15 +24,15 @@ export const Context = createContext<any>(undefined);
 
 export const AuthContextProvider = ({ children }: { children: any }) => {
   const router = useRouter();
-  const [isLogin, setIsLogin] = useState(true);
-  const signUpUser = createNewUser();
-  const loginWithMailAndPass: any = loginWithMailAndPassword();
-  const forgetPass = resetPass();
-  const editProfile = updateUserProfile();
+  const [isLogin, setIsLogin] = useState(false);
+  const signUpUser = CreateNewUser();
+  const loginWithMailAndPass: any = LoginWithMailAndPassword();
+  const forgetPass = ResetPass();
+  const editProfile = UpdateUserProfile();
   const currentUser: any = getUser();
-  const cretePost = addPost();
-  const handleEditPost = updatePost();
-  const comment = addComment();
+  const cretePost = AddPost();
+  const handleEditPost = UpdatePost();
+  const comment = AddComment();
   const [timeProgress, setTimeProgress] = useState(0);
 
   const signUp = (data: Users) => {
