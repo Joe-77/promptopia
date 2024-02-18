@@ -23,8 +23,7 @@ const Comment = ({ searchParams }: any) => {
 
   if (!isLogin) {
     return redirect("/login");
-  }
-
+  
   const submit = (comment: any) => {
     const data = {
       title: comment.title,
