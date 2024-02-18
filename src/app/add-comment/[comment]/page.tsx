@@ -9,10 +9,10 @@ import { SlActionRedo } from "react-icons/sl";
 import { useForm } from "react-hook-form";
 import ShowComments from "@/components/ShowComments";
 
-const comment = ({ searchParams }: any) => {
+const Comment = ({ searchParams }: any) => {
   const currentUser: any = getUser();
   const { isLogin, handleAddComment } = useContext(Context);
-  const postId : any = searchParams.postId;
+  const postId: any = searchParams.postId;
   const commentNum = Number(searchParams.comment);
 
   const {
@@ -83,4 +83,4 @@ const comment = ({ searchParams }: any) => {
   );
 };
 
-export default comment;
+export default Comment;
