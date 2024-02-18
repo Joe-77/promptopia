@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_PROGECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_STORE,
-  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGE_ID,
-  appId: process.env.NEXT_PUBLIC_APP_ID,
+  apiKey: "AIzaSyDPOs-xa_IbuFaZpmoiGKYddjgBxFo2oUs",
+  authDomain: "promptopia-c2eec.firebaseapp.com",
+  projectId: "promptopia-c2eec",
+  storageBucket: "promptopia-c2eec.appspot.com",
+  messagingSenderId: "107330345531",
+  appId: "1:107330345531:web:6208553519844ed9679a1e",
 };
 
 const app = initializeApp(firebaseConfig);
