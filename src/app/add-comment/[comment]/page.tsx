@@ -15,8 +15,6 @@ const Comment = ({ searchParams }: any) => {
   const postId: any = searchParams.postId;
   const commentNum = Number(searchParams.comment);
 
-  console.log(commentNum);
-
   const {
     register,
     handleSubmit,

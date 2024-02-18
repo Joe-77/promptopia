@@ -1,4 +1,3 @@
-import { Context } from "@/context/context";
 import { db, storage } from "@/firebase/firebaseConfig";
 import {
   addDoc,
@@ -10,7 +9,7 @@ import {
   query,
   updateDoc,
 } from "firebase/firestore";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useMutation, useQuery } from "react-query";
 import { toast } from "react-toastify";
 
@@ -96,7 +95,7 @@ export const AddComment = () => {
     const commentCollectionRef = collection(db, "comments");
     await addDoc(commentCollectionRef, comment);
     await updateDoc(doc(db, "posts", postId), {
-      comment: num + 1,
+      comment: Number(num++),
     });
     return Promise.resolve(comment);
   };
