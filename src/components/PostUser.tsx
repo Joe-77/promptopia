@@ -15,7 +15,7 @@ const PostUser = () => {
     <div className="container mx-auto mt-20 px-3 sm:px-0 pb-20">
       {allData?.length === 0 ? (
         <span className="text-lg flex justify-center mt-20 font-bold items-center gap-1">
-          <small>you don't have posts</small>
+          <small>you don&apos;t have posts</small>
           <Link
             className="text-sm text-rose-700 animate-pulse underline"
             href="/new-post"

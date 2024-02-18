@@ -16,9 +16,9 @@ const Page = () => {
             </span>
           </h2>
           <p className="text-sm mt-9 leading-5">
-            if you don't an account
+            if you don&apos;t an account
             <br /> you can
-            <Link className="text-blue-700 font-bold" href="register">
+            <Link className="text-blue-700 font-bold pl-1" href="register">
               Register here!
             </Link>
           </p>
