@@ -1,17 +1,19 @@
 import GetUser from "@/auth/getUser";
+import { Context } from "@/context/context";
 import { DeletePost } from "@/data/data";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { CiMenuKebab } from "react-icons/ci";
 
 export default function Menu({ id, postId, data }: any) {
   const currentUser: any = GetUser();
+  const { isLogin } = useContext(Context);
 
   const [showToggle, setShowToggle] = useState(false);
 
   return (
     <>
-      {id === currentUser?.uid && (
+      {id === currentUser?.uid && isLogin && (
         <div className="relative">
           <span
             onClick={() => setShowToggle(!showToggle)}
