@@ -73,7 +73,7 @@ const PostUser = () => {
                 <div className="pt-5">
                   <h5 className="text-sm">{e.title}</h5>
                   {e?.photo && (
-                    <div className="relative mt-2 w-full h-64">
+                    <div className="relative mt-2 w-full h-[500px] sm:h-96 lg:h-[450px]">
                       <Image
                         className="rounded-md"
                         fill
@@ -98,7 +98,6 @@ const PostUser = () => {
                 <span className="text-xl">
                   <AiFillMessage />
                 </span>
-                <span className="text-xs text-gray-500">{e.comment}</span>
               </Link>
             </div>
           ))}
