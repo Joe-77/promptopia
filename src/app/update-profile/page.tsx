@@ -75,13 +75,20 @@ const Page = () => {
               {currentUser?.email}
             </p>
           </div>
-          <div className="w-full sm:w-1/2 lg:w-2/5 rounded-md px-2 flex gap-2 items-center bg-[#EAF0F7] mt-3">
-            <FaPhotoVideo color="gray" />
-            <input
-              {...register("photo")}
-              className="w-full h-full outline-none bg-transparent py-2 rounded-md cursor-not-allowed"
-              type="file"
-            />
+          <div>
+            <div className="w-full sm:w-1/2 lg:w-2/5 rounded-md px-2 flex gap-2 items-center bg-[#EAF0F7] mt-3">
+              <FaPhotoVideo color="gray" />
+              <input
+                {...register("photo", { required: true })}
+                className="w-full h-full outline-none bg-transparent py-2 rounded-md cursor-not-allowed"
+                type="file"
+              />
+            </div>
+            {errors.photo && (
+              <small className="text-xSm text-red-600 px-2 block mt-2">
+                photo is required!
+              </small>
+            )}
           </div>
           <div className="mt-5 flex items-center justify-between w-full sm:w-1/2 lg:w-2/5">
             <button
