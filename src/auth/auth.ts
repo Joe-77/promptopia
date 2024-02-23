@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, updateDoc } from "firebase/firestore";
 import {
   getDownloadURL,
   ref,
@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import { useMutation, UseMutationOptions } from "react-query";
 import { toast } from "react-toastify";
 import getUser from "./getUser";
+import { GetAllPost } from "@/data/data";
 
 interface User {
   userName: string;
@@ -104,13 +105,13 @@ export const ResetPass = () => {
 };
 
 export const UpdateUserProfile = () => {
-
   const currentUser: { uid: string } | any = getUser();
   const router = useRouter();
+  const { data }: any = GetAllPost();
 
-  const handleUpdate = (data: { userName: string; photo: any }) => {
-    const userName = data.userName;
-    const photo = data?.photo[0];
+  const handleUpdate = (userData: { userName: string; photo: any }) => {
+    const userName = userData.userName;
+    const photo = userData?.photo[0];
     const photoName = photo.name;
     const userRef = doc(db, "users", currentUser.uid);
 
@@ -136,6 +137,20 @@ export const UpdateUserProfile = () => {
               email: currentUser.email,
               photoURL: downloadURL,
             });
+
+            if (data?.length !== 0) {
+              data?.map((e: any) => {
+                if (e.author.id === currentUser?.uid) {
+                  updateDoc(doc(db, "posts", e.id), {
+                    author: {
+                      id: currentUser?.uid,
+                      userPhoto: downloadURL,
+                      name: currentUser?.displayName,
+                    },
+                  });
+                }
+              });
+            }
           });
         }
       );

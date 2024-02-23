@@ -22,6 +22,7 @@ const Page = () => {
     return redirect("/login");
   }
 
+
   return (
     <section className="min-h-screen">
       <div className="w-64 sm:w-80 m-auto">

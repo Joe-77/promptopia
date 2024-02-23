@@ -6,7 +6,6 @@ import Menu from "./Menu";
 import { FidgetSpinner } from "react-loader-spinner";
 import { AiFillMessage } from "react-icons/ai";
 import { useContext } from "react";
-import { Context } from "@/context/context";
 import Link from "next/link";
 
 const ShowPosts = () => {

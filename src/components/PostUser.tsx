@@ -46,14 +46,14 @@ const PostUser = () => {
                     {e.author?.userPhoto ? (
                       <Image
                         className="rounded-full"
-                        src={e.author?.userPhoto}
+                        src={currentUser?.photoURL}
                         width={50}
                         height={50}
                         alt=""
                       />
                     ) : (
                       <div className="text-3xl text-black bg-green-700 capitalize w-12 h-12 rounded-full flex items-center justify-center">
-                        {e.author.name[0]}
+                        Y
                       </div>
                     )}
                     <span>
