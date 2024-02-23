@@ -104,7 +104,6 @@ export const ResetPass = () => {
 };
 
 export const UpdateUserProfile = () => {
-  // const router = useRouter();
 
   const currentUser: { uid: string } | any = getUser();
   const router = useRouter();

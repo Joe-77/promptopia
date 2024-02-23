@@ -70,7 +70,6 @@ export const UpdatePost = () => {
     const washingtonRef = doc(db, "posts", postId);
 
     await updateDoc(washingtonRef, data);
-    console.log(postId);
     return Promise.resolve(data);
   };
 

@@ -1,4 +1,5 @@
 "use client";
+import GetUser from "@/auth/getUser";
 import UpdatePostPhoto from "@/components/UpdatePostPhoto";
 import { Context } from "@/context/context";
 import { redirect } from "next/navigation";
@@ -9,6 +10,8 @@ const Edit = ({ searchParams }: any) => {
   const [currenImg, setCurrentImg] = useState(searchParams.photo);
   const [progress, setProgress] = useState(null);
   const { isLogin, handleUpdatePost, timeProgress } = useContext(Context);
+  const currentUser: any = GetUser();
+
   const {
     register,
     handleSubmit,
@@ -26,6 +29,7 @@ const Edit = ({ searchParams }: any) => {
       photo: currenImg,
       updated: true,
       createdAt: new Date(),
+      userPhoto: currentUser?.photoURL,
     };
     handleUpdatePost(updateData);
   };
