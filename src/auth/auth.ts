@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 import { useMutation, UseMutationOptions } from "react-query";
 import { toast } from "react-toastify";
 import getUser from "./getUser";
-import { GetAllPost } from "@/data/data";
+import { GetAllComments, GetAllPost } from "@/data/data";
 
 interface User {
   userName: string;
@@ -108,6 +108,7 @@ export const UpdateUserProfile = () => {
   const currentUser: { uid: string } | any = getUser();
   const router = useRouter();
   const { data }: any = GetAllPost();
+  const commentData = GetAllComments().data;
 
   const handleUpdate = (userData: { userName: string; photo: any }) => {
     const userName = userData.userName;
@@ -148,6 +149,19 @@ export const UpdateUserProfile = () => {
                       name: currentUser?.displayName,
                     },
                   });
+                }
+              });
+              commentData?.map((e: any) => {
+                if (e.author.id === currentUser?.uid) {
+                  if (e.author.id === currentUser?.uid) {
+                    updateDoc(doc(db, "comments", e.id), {
+                      author: {
+                        id: currentUser?.uid,
+                        photo: downloadURL,
+                        userName: currentUser?.displayName,
+                      },
+                    });
+                  }
                 }
               });
             }
